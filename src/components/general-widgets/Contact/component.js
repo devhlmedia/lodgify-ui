@@ -25,6 +25,13 @@ import {
   SEND,
 } from 'utils/default-strings';
 
+import {
+  COMMENT_MAX_LENGTH,
+  EMAIL_MAX_LENGTH,
+  NAME_MAX_LENGTH,
+  PHONE_MAX_LENGTH,
+} from './constants';
+
 /**
  * The standard widget for a user contact an owner.
  */
@@ -62,13 +69,24 @@ export const Component = ({
     validation={validation}
   >
     <InputGroup>
-      <TextInput autoComplete="name" label={nameInputLabel} name="name" />
-      <PhoneInput autoComplete="tel" label={phoneInputLabel} name="phone" />
+      <TextInput
+        autoComplete="name"
+        label={nameInputLabel}
+        maxCharacters={NAME_MAX_LENGTH}
+        name="name"
+      />
+      <PhoneInput
+        autoComplete="tel"
+        label={phoneInputLabel}
+        maxCharacters={PHONE_MAX_LENGTH}
+        name="phone"
+      />
     </InputGroup>
     <InputGroup>
       <TextInput
         autoComplete="email"
         label={emailInputLabel}
+        maxCharacters={EMAIL_MAX_LENGTH}
         name="email"
         width="eight"
       />
@@ -85,7 +103,11 @@ export const Component = ({
       name="dates"
       startDatePlaceholderText={arrivalDateInputLabel}
     />
-    <TextArea label={commentsInputLabel} name="comments" />
+    <TextArea
+      label={commentsInputLabel}
+      maxCharacters={COMMENT_MAX_LENGTH}
+      name="comments"
+    />
     {(roomOptions || propertyOptions) && (
       <InputGroup>
         {propertyOptions && (
