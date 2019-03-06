@@ -12,6 +12,7 @@ import {
   LOGIN,
 } from 'utils/default-strings';
 
+import { EMAIL_MAX_LENGTH, PASSWORD_MAX_LENGTH } from './constants';
 import { getForgotPasswordFormMarkup } from './utils/getForgotPasswordFormMarkup';
 
 /**
@@ -56,10 +57,16 @@ export const Component = ({
     successMessage={successMessage}
     validation={validation}
   >
-    <TextInput autoComplete="email" label={emailInputLabel} name="email" />
+    <TextInput
+      autoComplete="email"
+      label={emailInputLabel}
+      maxCharacters={EMAIL_MAX_LENGTH}
+      name="email"
+    />
     <TextInput
       autoComplete="current-password"
       label={passwordInputLabel}
+      maxCharacters={PASSWORD_MAX_LENGTH}
       name="password"
       type="password"
     />
